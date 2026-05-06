@@ -1,0 +1,76 @@
+http://localhost:64609/#/admin/news  للتعديل بالاخبار
+
+الزائر العادي   →  يتصفح الموقع بحرية بدون أي تسجيل
+
+المدير          →  يضغط "دخول الإدارة" في الـ Sidebar
+		- اسم المستخدم : المدير
+                →  يدخل كلمة السر: admin@damas2025
+                →  ينتقل تلقائياً للوحة الإدارة
+
+حماية إضافية   →  لو حاول أحد كتابة /admin/news في الرابط
+                →  يُعاد توجيهه للصفحة الرئيسية تلقائياً
+
+-----------------
+
+الخطوة ١ — إنشاء مشروع Firebase
+
+اذهب إلى console.firebase.google.com
+اضغط "إضافة مشروع"
+اسم المشروع: damas-eng
+أوقف Google Analytics (اختياري)
+اضغط "إنشاء المشروع"
+
+
+الخطوة ٢ — تفعيل Firestore
+
+من القائمة الجانبية → Firestore Database
+اضغط "إنشاء قاعدة بيانات"
+اختر "Start in test mode" (للتطوير)
+اختر المنطقة: europe-west3 (الأقرب لسوريا)
+اضغط "تفعيل"
+
+
+الخطوة ٣ — إضافة تطبيق الويب
+
+في صفحة المشروع اضغط أيقونة </> (Web)
+اسم التطبيق: damas-eng-web
+اضغط "تسجيل التطبيق"
+انسخ الـ firebaseConfig الذي سيظهر — سأحتاجه في الخطوة التالية
+
+سيبدو هكذا:
+jsconst firebaseConfig = {
+  apiKey: "AIza...",
+  authDomain: "damas-eng.firebaseapp.com",
+  projectId: "damas-eng",
+  storageBucket: "damas-eng.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123..."
+};
+
+---------------
+npm install firebase
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAHv1AlVyhkBue6l8jC5uPmuTh63oKMROY",
+  authDomain: "damas-eng.firebaseapp.com",
+  projectId: "damas-eng",
+  storageBucket: "damas-eng.firebasestorage.app",
+  messagingSenderId: "331461320144",
+  appId: "1:331461320144:web:33620a17eeb5529c35edd5"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+----------------
+flutter pub add firebase_core cloud_firestore
+flutter pub get
+flutter run -d chrome
+
+
+

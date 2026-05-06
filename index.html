@@ -5,7 +5,7 @@
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="description" content="Damas Eng Website">
 
-    <!-- السطر المهم الذي يطلبه Flutter -->
+    <!-- مهم لعمل GitHub Pages -->
     <base href="/damas-eng/">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,17 +16,12 @@
   </head>
 
   <body>
-    <script>
-      const serviceWorkerVersion = "2839893634" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */;
-    </script>
     <script src="flutter.js" defer></script>
+
     <script>
-      window.addEventListener('load', function(ev) {
-        _flutter.loader.loadEntrypoint({
-          serviceWorker: {
-            serviceWorkerVersion: serviceWorkerVersion,
-          }
-        }).then(function(engineInitializer) {
+      // تشغيل Flutter بدون Service Worker
+      window.addEventListener('load', function() {
+        _flutter.loader.loadEntrypoint().then(function(engineInitializer) {
           return engineInitializer.initializeEngine();
         }).then(function(appRunner) {
           return appRunner.runApp();
